@@ -14,3 +14,4 @@ Plug 'Yggdroot/indentLine'
 " let g:indentLine_bgcolor_gui = '#FF5F00'
 
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_enabled = 0  " Disabled

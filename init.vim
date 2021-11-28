@@ -1,60 +1,60 @@
-" Command #1: curl -fLo $HOME/.config/nvim/plug.vim --create-dirs \
+" ==========================================================================
+" To install:
+" [1] search for "vim-plug" plugin manager and follow installation
+" instructions.
+" [2] You will need an autoload folder inside the nvim configuration folder.
+" [3] Run: curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs \
 " https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" [4] You are done, just run nvim and install plugins with PlugInstall
+" command.
+" [5] Optionally you may create an alias to replace `vim` with  `nvim`
+" ==========================================================================
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+" Apparently, I need to change this before the plugins are loaded otherwise
+" the change won't take effect.
+let mapleader = "\<space>"
 
-" ======[ LIST OF PLUGINS FOR INSTALLATION ]========
-" Specify a directory for plugins
+"--------------------------------------------------------------------------
+" Plugins settings
+"--------------------------------------------------------------------------
+
+" Specify a directory for plugins and initialize plugin system
 call plug#begin('~/.config/nvim/plugged')
-" Gruvbox plugin.
-source ~/.config/nvim/plugins_cfg/gruvbox.vim
-" " Another solarized theme.
-source ~/.config/nvim/plugins_cfg/vim-solarized8.vim
-source ~/.config/nvim/plugins_cfg/vim-colors-solarized.vim
-source ~/.config/nvim/plugins_cfg/neosolarized.vim
-" Git support
-source ~/.config/nvim/plugins_cfg/fugitive.vim
-" Nerd tree
-source ~/.config/nvim/plugins_cfg/nerdtree.vim
-" Fuzzy search
-source ~/.config/nvim/plugins_cfg/ctrlp.vim
-" Autocomplete
-source ~/.config/nvim/plugins_cfg/coc.vim
-" Comment lines out.
-source ~/.config/nvim/plugins_cfg/nerdcommenter.vim
-" Synatx checking
-source ~/.config/nvim/plugins_cfg/syntastic.vim
-" Easy motion in text.
-source ~/.config/nvim/plugins_cfg/easymotion.vim
-" Change, add, replace surroundin ( { ""})
-source ~/.config/nvim/plugins_cfg/vim-surround.vim
-" Poweline style status bar.
-source ~/.config/nvim/plugins_cfg/airline.vim
-" Add a vertical identation line to programs.
-source ~/.config/nvim/plugins_cfg/indentline.vim
-" Show code for modified lines in a repo.
-source ~/.config/nvim/plugins_cfg/gitgutter.vim
-" Controls folding (2 plugins)
-source ~/.config/nvim/plugins_cfg/folding.vim
-" Markdown preview
-source ~/.config/nvim/plugins_cfg/markdown-preview.vim
-" File listing
-source ~/.config/nvim/plugins_cfg/fzf.vim
-" Opens a floating terminal
-source ~/.config/nvim/plugins_cfg/floaterm.vim
-" Support color colornames
-source ~/.config/nvim/plugins_cfg/colorizer.vim
-
-" Initialize plugin system
+" ======[ Tools ] ======
+source ~/.config/nvim/plugins_cfg/goyo.vim                  " Focus writing
+source ~/.config/nvim/plugins_cfg/vifm.vim                  " Invoking Vifm to open files.
+source ~/.config/nvim/plugins_cfg/fugitive.vim              " Git support
+source ~/.config/nvim/plugins_cfg/nerdtree.vim              " Nerd tree
+source ~/.config/nvim/plugins_cfg/ctrlp.vim                 " Fuzzy search
+source ~/.config/nvim/plugins_cfg/fzf.vim                   " File listing in a window 
+source ~/.config/nvim/plugins_cfg/floaterm.vim              " Opens a floating terminal
+" ======[ Visual scheme ] ======
+source ~/.config/nvim/plugins_cfg/gruvbox.vim               " Gruvbox plugin.
+source ~/.config/nvim/plugins_cfg/vim-solarized8.vim        " Another solarized theme.
+source ~/.config/nvim/plugins_cfg/vim-colors-solarized.vim  " Another solarized theme.
+source ~/.config/nvim/plugins_cfg/papercolor.vim            " Papercolor theme.
+source ~/.config/nvim/plugins_cfg/neosolarized.vim          " Another solarized theme. 
+source ~/.config/nvim/plugins_cfg/airline.vim               " Poweline style status bar.
+source ~/.config/nvim/plugins_cfg/colorizer.vim             " Support color colornames 
+" ======[ Programming ] ======
+source ~/.config/nvim/plugins_cfg/coc.vim                   " Autocomplete
+source ~/.config/nvim/plugins_cfg/nerdcommenter.vim         " Comment lines out.
+source ~/.config/nvim/plugins_cfg/syntastic.vim             " Synatx checking
+source ~/.config/nvim/plugins_cfg/easymotion.vim            " Easy motion in text.
+source ~/.config/nvim/plugins_cfg/vim-surround.vim          " Change, add, replace surrounding brackets.
+source ~/.config/nvim/plugins_cfg/indentline.vim            " Add a vertical identation line to programs.
+source ~/.config/nvim/plugins_cfg/gitgutter.vim             " Show code for modified lines in a repo.
+source ~/.config/nvim/plugins_cfg/folding.vim               " Controls folding (2 plugins)
+source ~/.config/nvim/plugins_cfg/markdown-preview.vim      " Markdown preview
 call plug#end()
-" ======[ End of Plugin configuration ]========
 
 "--------------------------------------------------------------------------
 " General settings
 "--------------------------------------------------------------------------
 filetype plugin on
-"" Encoding
+" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
@@ -65,7 +65,7 @@ set smarttab
 set tabstop=4
 set hidden              " Abandoned buffers are not unloaded.
 " Keep the sign column always open so that the text does not shift horiz.
-" set signcolumn=yes:2
+set signcolumn=yes:1
 set relativenumber      " Show numbering relative to cursor location.
 set number              " Show line numbers
 " set hlsearch            " Highlight text while search string is typed in.
@@ -81,10 +81,11 @@ set linebreak           " Wrap lines at convenient points, preserving word integ
 set autoread            " Reload files changed outside vim
 set ruler               " Show text info on the botto right, such line/column percentage%
 set visualbell          " Visual bell instead of sound.
+set cursorline          " Show a cursor line where the cursor is.
 set list                " Show tabs and spaces with symbols.
 set listchars=tab:▸\ ,trail:·  " Visual cues while typing.
 set mouse=a             " Enables mouse support in all modes.
-set sidescroll=1                " Scroll 1 column at a time.
+set sidescroll=1        " Scroll 1 column at a time.
 set scrolloff=8         " Minimal # of lines to keep above/below the cursor.
 set backspace=indent,eol,start  " more powerful backspacing
 set nojoinspaces        " Does not add 2 spaces after '?', '.', '!'.
@@ -98,7 +99,8 @@ set background=dark
 " colorscheme solarized8
 " colorscheme solarized
 colorscheme NeoSolarized
-" colorscheme gruvbox
+colorscheme gruvbox
+colorscheme PaperColor
 
 
 " =========================================
@@ -107,6 +109,7 @@ colorscheme NeoSolarized
 " enable syntax and plugins (for netrw)
 syntax enable
 filetype plugin on
+set foldmethod=syntax
 
 " =========================================
 " [1] OPENS A TERMINAL WINDOW BELOW
@@ -119,8 +122,8 @@ filetype plugin on
 " =========================================
 " [2] FINDING FILES:
 " =========================================
-
-" Search down into subfolders
+:
+:" Search down into subfolders
 " Provides tab-completion for all file-related tasks
 set path+=**
 
@@ -186,15 +189,26 @@ endfunction
 " Key maps
 "--------------------------------------------------------------------------
 
-let mapleader = "\<space>"
-
+" nmap <C-g> :Goyo<CR>
+nmap <ENTER> :Goyo<CR>
+nmap <C-i> :IndentLinesToggle<CR>
 nmap <silent> <F5> :call ClangCheck()<CR><CR>
+nmap <leader>fm :EditVifm .<CR>
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
 
 nmap <leader>Q :bufdo bdelete<cr>
+
+" Temporarily disable execution mode.
+nnoremap Q <nop>
+
+" Replate Ctrl+W + navigation_keys for Ctrl+naviagation_keys.
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Allow gf to open non-existent files
 map gf :edit <cfile><cr>
