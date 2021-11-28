@@ -1,5 +1,6 @@
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
+Plug 'neoclide/coc-vimtex'
 
 " let g:coc_global_extensions = [
 "     \ 'coc-css',
@@ -27,6 +28,7 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-json',
     \ 'coc-clangd',
+    \ 'coc-vimtex',
     \ 'coc-sh']
 
 " Use tab for trigger completion with characters ahead and navigate.
