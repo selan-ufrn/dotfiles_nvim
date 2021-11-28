@@ -29,6 +29,7 @@ source ~/.config/nvim/plugins_cfg/fugitive.vim              " Git support
 source ~/.config/nvim/plugins_cfg/nerdtree.vim              " Nerd tree
 source ~/.config/nvim/plugins_cfg/ctrlp.vim                 " Fuzzy search
 source ~/.config/nvim/plugins_cfg/fzf.vim                   " File listing in a window 
+source ~/.config/nvim/plugins_cfg/telescope.vim             " Search and stuff in window
 source ~/.config/nvim/plugins_cfg/floaterm.vim              " Opens a floating terminal
 " ======[ Visual scheme ] ======
 source ~/.config/nvim/plugins_cfg/gruvbox.vim               " Gruvbox plugin.
@@ -38,6 +39,7 @@ source ~/.config/nvim/plugins_cfg/papercolor.vim            " Papercolor theme.
 source ~/.config/nvim/plugins_cfg/neosolarized.vim          " Another solarized theme. 
 source ~/.config/nvim/plugins_cfg/airline.vim               " Poweline style status bar.
 source ~/.config/nvim/plugins_cfg/colorizer.vim             " Support color colornames 
+source ~/.config/nvim/plugins_cfg/vim-devicons.vim          " Icons support.
 " ======[ Programming ] ======
 source ~/.config/nvim/plugins_cfg/coc.vim                   " Autocomplete
 source ~/.config/nvim/plugins_cfg/nerdcommenter.vim         " Comment lines out.
@@ -48,7 +50,9 @@ source ~/.config/nvim/plugins_cfg/indentline.vim            " Add a vertical ide
 source ~/.config/nvim/plugins_cfg/gitgutter.vim             " Show code for modified lines in a repo.
 source ~/.config/nvim/plugins_cfg/folding.vim               " Controls folding (2 plugins)
 source ~/.config/nvim/plugins_cfg/markdown-preview.vim      " Markdown preview
+source ~/.config/nvim/plugins_cfg/treesitter.vim            " Better highlight, folding, autocomplete.
 call plug#end()
+
 
 "--------------------------------------------------------------------------
 " General settings
@@ -242,3 +246,6 @@ nmap <silent> <A-Right> :wincmd l<CR>
 "
 " " For global replace
 " nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+lua << EOF
+require("treesitter")
+EOF
