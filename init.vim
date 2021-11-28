@@ -39,6 +39,10 @@ source ~/.config/nvim/plugins_cfg/gitgutter.vim
 source ~/.config/nvim/plugins_cfg/folding.vim
 " Markdown preview
 source ~/.config/nvim/plugins_cfg/markdown-preview.vim
+" File listing
+source ~/.config/nvim/plugins_cfg/fzf.vim
+" Opens a floating terminal
+source ~/.config/nvim/plugins_cfg/floaterm.vim
 
 " Initialize plugin system
 call plug#end()
@@ -76,8 +80,8 @@ set linebreak           " Wrap lines at convenient points, preserving word integ
 set autoread            " Reload files changed outside vim
 set ruler               " Show text info on the botto right, such line/column percentage%
 set visualbell          " Visual bell instead of sound.
-" set list                " Show tabs and spaces with symbols.
-" set listchars=tab:▸\ ,trail:·  " Visual cues while typing.
+set list                " Show tabs and spaces with symbols.
+set listchars=tab:▸\ ,trail:·  " Visual cues while typing.
 set mouse=a             " Enables mouse support in all modes.
 set sidescroll=1                " Scroll 1 column at a time.
 set scrolloff=8         " Minimal # of lines to keep above/below the cursor.
@@ -184,9 +188,15 @@ endfunction
 let mapleader = "\<space>"
 
 nmap <silent> <F5> :call ClangCheck()<CR><CR>
+
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
+
+nmap <leader>Q :bufdo bdelete<cr>
+
+" Allow gf to open non-existent files
+map gf :edit <cfile><cr>
 
 " Reselect visual selection after indenting
 vnoremap < <gv
