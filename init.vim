@@ -43,11 +43,12 @@ source ~/.config/nvim/plugins_cfg/markdown-preview.vim
 source ~/.config/nvim/plugins_cfg/fzf.vim
 " Opens a floating terminal
 source ~/.config/nvim/plugins_cfg/floaterm.vim
+" Support color colornames
+source ~/.config/nvim/plugins_cfg/colorizer.vim
 
 " Initialize plugin system
 call plug#end()
 " ======[ End of Plugin configuration ]========
-
 
 "--------------------------------------------------------------------------
 " General settings
