@@ -1,2 +1,2 @@
 " Syntax checking
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
