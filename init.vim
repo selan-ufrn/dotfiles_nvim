@@ -28,25 +28,25 @@ let mapleader = "\<space>"
 " Specify a directory for plugins and initialize plugin system
 call plug#begin('~/.config/nvim/plugged')
 " ======[ Tools ] ======
-"   source ~/.config/nvim/plugins_cfg/goyo.vim                  " Focus writing
+source ~/.config/nvim/plugins_cfg/goyo.vim                  " Focus writing
 source ~/.config/nvim/plugins_cfg/vifm.vim                  " Invoking Vifm to open files.
-"   " source ~/.config/nvim/plugins_cfg/fugitive.vim              " Git support
-"   " source ~/.config/nvim/plugins_cfg/nerdtree.vim              " Nerd tree
-"   source ~/.config/nvim/plugins_cfg/ctrlp.vim                 " Fuzzy search
+" source ~/.config/nvim/plugins_cfg/fugitive.vim              " Git support
+" source ~/.config/nvim/plugins_cfg/nerdtree.vim              " Nerd tree
+" source ~/.config/nvim/plugins_cfg/ctrlp.vim                 " Fuzzy search
 source ~/.config/nvim/plugins_cfg/fzf.vim                   " File listing in a window 
-"   " source ~/.config/nvim/plugins_cfg/telescope.vim             " Search and stuff in window
+" source ~/.config/nvim/plugins_cfg/telescope.vim             " Search and stuff in window
 source ~/.config/nvim/plugins_cfg/floaterm.vim              " Opens a floating terminal
 "   " ======[ Visual scheme ] ======
-"   " source ~/.config/nvim/plugins_cfg/gruvbox.vim               " Gruvbox plugin.
+" source ~/.config/nvim/plugins_cfg/gruvbox.vim               " Gruvbox plugin.
 source ~/.config/nvim/plugins_cfg/vim-solarized8.vim        " Another solarized theme.
-"   " source ~/.config/nvim/plugins_cfg/vim-colors-solarized.vim  " Another solarized theme.
+" source ~/.config/nvim/plugins_cfg/vim-colors-solarized.vim  " Another solarized theme.
 source ~/.config/nvim/plugins_cfg/papercolor.vim            " Papercolor theme.
-"   " source ~/.config/nvim/plugins_cfg/neosolarized.vim          " Another solarized theme.
+" source ~/.config/nvim/plugins_cfg/neosolarized.vim          " Another solarized theme.
 source ~/.config/nvim/plugins_cfg/airline.vim               " Poweline style status bar.
 source ~/.config/nvim/plugins_cfg/colorizer.vim             " Support color colornames 
 source ~/.config/nvim/plugins_cfg/vim-devicons.vim          " Icons support.
 " ======[ Programming ] ======
-"source ~/.config/nvim/plugins_cfg/coc.vim                   " Autocomplete
+" source ~/.config/nvim/plugins_cfg/coc.vim                   " Autocomplete
 source ~/.config/nvim/plugins_cfg/nerdcommenter.vim         " Comment lines out.
 " source ~/.config/nvim/plugins_cfg/syntastic.vim             " Synatx checking
 source ~/.config/nvim/plugins_cfg/easymotion.vim            " Easy motion in text.
@@ -54,7 +54,7 @@ source ~/.config/nvim/plugins_cfg/easymotion.vim            " Easy motion in tex
 " source ~/.config/nvim/plugins_cfg/indentline.vim            " Add a vertical identation line to programs.
 source ~/.config/nvim/plugins_cfg/gitgutter.vim             " Show code for modified lines in a repo.
 source ~/.config/nvim/plugins_cfg/folding.vim               " Controls folding (2 plugins)
-source ~/.config/nvim/plugins_cfg/markdown-preview.vim      " Markdown preview
+source ~/.config/nvim/plugins_cfg/markdown-preview.vim      " Markdown preview. To activate: <C-p>
 source ~/.config/nvim/plugins_cfg/treesitter.vim            " Better highlight, folding, autocomplete.
 source ~/.config/nvim/plugins_cfg/ycm.vim                   " YouCompleteMe configuration: code complition
 call plug#end()
@@ -102,7 +102,7 @@ set splitright          " Split windows are put to the right of current one.
 set clipboard=unnamedplus " Clipboard info is always shared with the system clipboard.
 set confirm             " Opens a confirm dialog in certain operations, such as quitting unsaved buffer.
 set updatetime=300      " Is nothing is typed in this interval the swap file will be written to disk
-set redrawtime=10000    " Allow more time for loading syntax on large files
+"set redrawtime=10000    " Allow more time for loading syntax on large files
 
 set background=dark
 " colorscheme solarized8
@@ -255,6 +255,6 @@ nmap <silent> <A-Right> :wincmd l<CR>
 " " For global replace
 " nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
-"               lua << EOF
-"               require("treesitter")
-"               EOF
+lua << EOF
+require("treesitter")
+EOF
