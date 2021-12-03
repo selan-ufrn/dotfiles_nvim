@@ -30,33 +30,32 @@ call plug#begin('~/.config/nvim/plugged')
 " ======[ Tools ] ======
 source ~/.config/nvim/plugins_cfg/goyo.vim                  " Focus writing
 source ~/.config/nvim/plugins_cfg/vifm.vim                  " Invoking Vifm to open files.
-" source ~/.config/nvim/plugins_cfg/fugitive.vim              " Git support
-" source ~/.config/nvim/plugins_cfg/nerdtree.vim              " Nerd tree
-" source ~/.config/nvim/plugins_cfg/ctrlp.vim                 " Fuzzy search
 source ~/.config/nvim/plugins_cfg/fzf.vim                   " File listing in a window 
-" source ~/.config/nvim/plugins_cfg/telescope.vim             " Search and stuff in window
-source ~/.config/nvim/plugins_cfg/floaterm.vim              " Opens a floating terminal
-"   " ======[ Visual scheme ] ======
+source ~/.config/nvim/plugins_cfg/floaterm.vim              " Opens a floating terminal <lead>+F1-4
+" ======[ Visual scheme ] ======
 " source ~/.config/nvim/plugins_cfg/gruvbox.vim               " Gruvbox plugin.
-source ~/.config/nvim/plugins_cfg/vim-solarized8.vim        " Another solarized theme.
-" source ~/.config/nvim/plugins_cfg/vim-colors-solarized.vim  " Another solarized theme.
+source ~/.config/nvim/plugins_cfg/vim-solarized8.vim        " Solarized theme.
 source ~/.config/nvim/plugins_cfg/papercolor.vim            " Papercolor theme.
-" source ~/.config/nvim/plugins_cfg/neosolarized.vim          " Another solarized theme.
 source ~/.config/nvim/plugins_cfg/airline.vim               " Poweline style status bar.
-source ~/.config/nvim/plugins_cfg/colorizer.vim             " Support color colornames 
+source ~/.config/nvim/plugins_cfg/colorizer.vim             " Support coloring of colornames 
 source ~/.config/nvim/plugins_cfg/vim-devicons.vim          " Icons support.
 " ======[ Programming ] ======
-" source ~/.config/nvim/plugins_cfg/coc.vim                   " Autocomplete
 source ~/.config/nvim/plugins_cfg/nerdcommenter.vim         " Comment lines out.
-" source ~/.config/nvim/plugins_cfg/syntastic.vim             " Synatx checking
 source ~/.config/nvim/plugins_cfg/easymotion.vim            " Easy motion in text.
-" source ~/.config/nvim/plugins_cfg/vim-surround.vim          " Change, add, replace surrounding brackets.
-" source ~/.config/nvim/plugins_cfg/indentline.vim            " Add a vertical identation line to programs.
 source ~/.config/nvim/plugins_cfg/gitgutter.vim             " Show code for modified lines in a repo.
 source ~/.config/nvim/plugins_cfg/folding.vim               " Controls folding (2 plugins)
 source ~/.config/nvim/plugins_cfg/markdown-preview.vim      " Markdown preview. To activate: <C-p>
 source ~/.config/nvim/plugins_cfg/treesitter.vim            " Better highlight, folding, autocomplete.
-source ~/.config/nvim/plugins_cfg/ycm.vim                   " YouCompleteMe configuration: code complition
+source ~/.config/nvim/plugins_cfg/ycm.vim                   " YouCompleteMe -> IDE support: autocomplete, syntax checking
+" ======[ Deactivated ] ======
+" source ~/.config/nvim/plugins_cfg/syntastic.vim             " Syntax checking
+" source ~/.config/nvim/plugins_cfg/coc.vim                   " Autocomplete
+" source ~/.config/nvim/plugins_cfg/vim-surround.vim          " Change, add, replace surrounding brackets.
+" source ~/.config/nvim/plugins_cfg/indentline.vim            " Add a vertical identation line to programs.
+" source ~/.config/nvim/plugins_cfg/telescope.vim             " Search and stuff displayed in a window
+" source ~/.config/nvim/plugins_cfg/fugitive.vim              " Git support
+" source ~/.config/nvim/plugins_cfg/nerdtree.vim              " Nerd tree
+" source ~/.config/nvim/plugins_cfg/ctrlp.vim                 " Fuzzy search
 call plug#end()
 
 "--------------------------------------------------------------------------
@@ -66,15 +65,13 @@ filetype plugin on
 " Encoding
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8
 " Tabbing
 set expandtab
 set shiftwidth=4
 set smarttab
 set tabstop=4
 set hidden              " Abandoned buffers are not unloaded.
-" Keep the sign column always open so that the text does not shift horiz.
-set signcolumn=yes:1
+set signcolumn=yes:1    " Keep the sign column always open so that the text does not shift horiz.
 set relativenumber      " Show numbering relative to cursor location.
 set number              " Show line numbers
 " set hlsearch            " Highlight text while search string is typed in.
@@ -95,7 +92,7 @@ set list                " Show tabs and spaces with symbols.
 set listchars=tab:▸\ ,trail:·  " Visual cues while typing.
 set mouse=a             " Enables mouse support in all modes.
 set sidescroll=1        " Scroll 1 column at a time.
-set scrolloff=8         " Minimal # of lines to keep above/below the cursor.
+set scrolloff=6         " Minimal # of lines to keep above/below the cursor.
 set backspace=indent,eol,start  " more powerful backspacing
 set nojoinspaces        " Does not add 2 spaces after '?', '.', '!'.
 set splitright          " Split windows are put to the right of current one.
@@ -103,6 +100,7 @@ set clipboard=unnamedplus " Clipboard info is always shared with the system clip
 set confirm             " Opens a confirm dialog in certain operations, such as quitting unsaved buffer.
 set updatetime=300      " Is nothing is typed in this interval the swap file will be written to disk
 "set redrawtime=10000    " Allow more time for loading syntax on large files
+set foldmethod=syntax   " Folding by syntax, not block
 
 set background=dark
 " colorscheme solarized8
@@ -119,7 +117,6 @@ colorscheme solarized8_high
 " enable syntax and plugins (for netrw)
 syntax enable
 filetype plugin on
-set foldmethod=syntax
 
 " =========================================
 " [1] OPENS A TERMINAL WINDOW BELOW
@@ -202,7 +199,7 @@ endfunction
 " nmap <C-g> :Goyo<CR>
 nmap <ENTER> :Goyo<CR>
 " nmap <C-i> :IndentLinesToggle<CR>
-nmap <silent> <F5> :call ClangCheck()<CR><CR>
+nmap <silent> <F5> :call ClangCheck()<CR>
 nmap <leader>fm :EditVifm .<CR>
 nmap <leader>fv :VsplitVifm .<CR>
 nmap <leader>fh :SplitVifm .<CR>
@@ -212,6 +209,7 @@ nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
 
 nmap <leader>Q :bufdo bdelete<cr>
+" nmap <leader>te :botright 10split | terminal<cr>
 
 " Temporarily disable execution mode.
 nnoremap Q <nop>
