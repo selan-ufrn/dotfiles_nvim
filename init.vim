@@ -35,6 +35,7 @@ source ~/.config/nvim/plugins_cfg/floaterm.vim              " Opens a floating t
 " ======[ Visual scheme ] ======
 " source ~/.config/nvim/plugins_cfg/gruvbox.vim               " Gruvbox plugin.
 source ~/.config/nvim/plugins_cfg/vim-solarized8.vim        " Solarized theme.
+source ~/.config/nvim/plugins_cfg/dracula.vim        " Solarized theme.
 source ~/.config/nvim/plugins_cfg/papercolor.vim            " Papercolor theme.
 source ~/.config/nvim/plugins_cfg/airline.vim               " Poweline style status bar.
 source ~/.config/nvim/plugins_cfg/colorizer.vim             " Support coloring of colornames 
@@ -108,7 +109,8 @@ set background=dark
 " colorscheme NeoSolarized
 " colorscheme gruvbox
 " colorscheme PaperColor
-colorscheme solarized8_high
+" colorscheme solarized8_high
+colorscheme dracula
 
 
 " =========================================
