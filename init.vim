@@ -207,7 +207,7 @@ nmap <leader>fv :VsplitVifm .<CR>
 nmap <leader>fh :SplitVifm .<CR>
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
-nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
+nmap <leader>vy :edit ~/.config/nvim/plugins_cfg/ycm.vim<cr>
 nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
 
 nmap <leader>Q :bufdo bdelete<cr>
