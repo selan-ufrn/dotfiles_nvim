@@ -110,7 +110,7 @@ set background=dark
 " colorscheme gruvbox
 " colorscheme PaperColor
 " colorscheme solarized8_high
-colorscheme dracula
+" colorscheme dracula
 
 
 " =========================================
