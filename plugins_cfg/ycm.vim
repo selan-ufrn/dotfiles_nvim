@@ -23,6 +23,7 @@ nnoremap <leader>gdf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gdc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>yd :YcmDiags<CR>
+" nmap <leader>D <plug>(YCMHover)
 
 function! s:CustomizeYcmLocationWindow()
   " Move the window to the top of the screen.
@@ -44,3 +45,4 @@ function! s:CustomizeYcmQuickFixWindow()
 endfunction
 
 autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
+

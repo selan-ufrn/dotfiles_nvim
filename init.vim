@@ -28,12 +28,12 @@ let mapleader = "\<space>"
 " Specify a directory for plugins and initialize plugin system
 call plug#begin('~/.config/nvim/plugged')
 " ======[ Tools ] ======
-source ~/.config/nvim/plugins_cfg/goyo.vim                  " Focus writing
+" source ~/.config/nvim/plugins_cfg/goyo.vim                  " Focus writing
 source ~/.config/nvim/plugins_cfg/vifm.vim                  " Invoking Vifm to open files.
 source ~/.config/nvim/plugins_cfg/fzf.vim                   " File listing in a window 
 source ~/.config/nvim/plugins_cfg/floaterm.vim              " Opens a floating terminal <lead>+F1-4
 " ======[ Visual scheme ] ======
-" source ~/.config/nvim/plugins_cfg/gruvbox.vim               " Gruvbox plugin.
+source ~/.config/nvim/plugins_cfg/gruvbox.vim               " Gruvbox plugin.
 source ~/.config/nvim/plugins_cfg/vim-solarized8.vim        " Solarized theme.
 source ~/.config/nvim/plugins_cfg/dracula.vim        " Solarized theme.
 source ~/.config/nvim/plugins_cfg/papercolor.vim            " Papercolor theme.
@@ -86,14 +86,15 @@ set smartindent         " Smart indentation when programming.
 set nowrap              " Do not wrap long lines.
 set linebreak           " Wrap lines at convenient points, preserving word integrity.
 set autoread            " Reload files changed outside vim
-set ruler               " Show text info on the botto right, such line/column percentage%
+set ruler               " Show text info on the bottom right, such line/column percentage%
 set visualbell          " Visual bell instead of sound.
 set cursorline          " Show a cursor line where the cursor is.
 set list                " Show tabs and spaces with symbols.
 set listchars=tab:▸\ ,trail:·  " Visual cues while typing.
 set mouse=a             " Enables mouse support in all modes.
 set sidescroll=1        " Scroll 1 column at a time.
-set scrolloff=6         " Minimal # of lines to keep above/below the cursor.
+" set scrolloff=6         " Minimal # of lines to keep above/below the cursor.
+set scrolloff=1         " Minimal # of lines to keep above/below the cursor.
 set backspace=indent,eol,start  " more powerful backspacing
 set nojoinspaces        " Does not add 2 spaces after '?', '.', '!'.
 set splitright          " Split windows are put to the right of current one.
@@ -108,7 +109,7 @@ set background=dark
 " colorscheme solarized
 " colorscheme NeoSolarized
 " colorscheme gruvbox
-" colorscheme PaperColor
+colorscheme PaperColor
 " colorscheme solarized8_high
 " colorscheme dracula
 
@@ -131,8 +132,7 @@ filetype plugin on
 " =========================================
 " [2] FINDING FILES:
 " =========================================
-:
-:" Search down into subfolders
+" Search down into subfolders
 " Provides tab-completion for all file-related tasks
 set path+=**
 
@@ -199,7 +199,7 @@ endfunction
 "--------------------------------------------------------------------------
 
 " nmap <C-g> :Goyo<CR>
-nmap <ENTER> :Goyo<CR>
+" nmap <ENTER> :Goyo<CR>
 " nmap <C-i> :IndentLinesToggle<CR>
 nmap <silent> <F5> :call ClangCheck()<CR>
 nmap <leader>fm :EditVifm .<CR>
@@ -249,7 +249,18 @@ nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
-" " For local replace
+nnoremap <leader>te :botright 10split \| terminal <CR>
+
+" Remaping escape shortcut in terminal mode.
+" tnoremap <Esc> <C-\><C-n>
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  " Use this to escape in buffer, or vifm windows: Alt + [
+  tnoremap <M-[> <Esc> " Use this to escape in buffer, or vifm windows
+  tnoremap <C-v><Esc> <Esc>
+endif
+
+  " For local replace
 " nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 "
 " " For global replace
